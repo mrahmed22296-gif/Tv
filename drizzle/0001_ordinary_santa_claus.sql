@@ -1,0 +1,22 @@
+CREATE TABLE `streaming_apps` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`title` varchar(160) NOT NULL,
+	`slug` varchar(180) NOT NULL,
+	`shortDescription` varchar(320) NOT NULL,
+	`description` text NOT NULL,
+	`category` enum('smart-tv','android-mobile','live-iptv','free-codes') NOT NULL,
+	`iconUrl` text,
+	`coverUrl` text,
+	`apkUrl` text,
+	`mirrorUrl` text,
+	`activationCodes` text NOT NULL,
+	`compatibility` text NOT NULL,
+	`version` varchar(32) NOT NULL,
+	`fileSize` varchar(32) NOT NULL,
+	`installationSteps` text NOT NULL,
+	`isActive` int NOT NULL DEFAULT 1,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `streaming_apps_id` PRIMARY KEY(`id`),
+	CONSTRAINT `streaming_apps_slug_unique` UNIQUE(`slug`)
+);
